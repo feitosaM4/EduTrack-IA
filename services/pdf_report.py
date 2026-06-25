@@ -72,7 +72,7 @@ def gerar_pdf_desempenho(
     gerado_em = datetime.now().strftime("%d/%m/%Y %H:%M")
 
     story: list[Any] = [
-        Paragraph("Relatório de Desempenho — EduTrack AI", title_style),
+        Paragraph("Relatório de Desempenho — Edutrack IA", title_style),
         Paragraph(f"Aluno(a): <b>{nome_usuario or 'Estudante'}</b>", body_style),
         Paragraph(f"Gerado em: {gerado_em}", subtitle_style),
         Paragraph("Resumo geral", heading_style),

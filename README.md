@@ -1,16 +1,16 @@
-# EduTrack IA
+# Edutrack IA
 
 Plataforma acadêmica desenvolvida em **Python**, **Streamlit** e **Xano** para auxiliar estudantes na organização da rotina universitária.
 
 ## Sobre o projeto
 
-O EduTrack IA centraliza em um único ambiente as principais informações da vida acadêmica, permitindo acompanhar disciplinas, tarefas, notas, professores e desempenho de forma simples e intuitiva.
+O Edutrack IA centraliza em um único ambiente as principais informações da vida acadêmica, permitindo acompanhar disciplinas, tarefas, notas, professores e desempenho de forma simples e intuitiva.
 
 O projeto foi desenvolvido com foco em aprendizado prático, integração entre frontend e backend e construção de uma aplicação real.
 
 ## Preview
 
-![Tela de login do EduTrack IA](assets/images/login-preview.png)
+![Tela de login do Edutrack IA](assets/images/login-preview.png)
 
 ## Funcionalidades
 

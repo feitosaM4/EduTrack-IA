@@ -819,7 +819,7 @@ def page_title(title: str, subtitle: str) -> None:
             <h1>{title}</h1>
             <div class="muted">{subtitle}</div>
           </div>
-          <span class="pill" style="background:var(--sidebar-active);color:var(--accent);">EduTrack AI</span>
+          <span class="pill" style="background:var(--sidebar-active);color:var(--accent);">Edutrack IA</span>
         </div>
         """,
         unsafe_allow_html=True,

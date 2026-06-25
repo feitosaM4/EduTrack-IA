@@ -191,7 +191,7 @@ def login_page() -> None:
             <div class="login-copy">
               <div class="login-brand">
                 <span class="brand-mark">🎓</span>
-                <div class="login-brand-name">EduTrack <span>AI</span></div>
+                <div class="login-brand-name">Edutrack <span>IA</span></div>
               </div>
               <h1 class="login-headline">
                 <span class="login-headline-main">Seu semestre sob</span><br>

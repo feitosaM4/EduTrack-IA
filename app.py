@@ -34,7 +34,7 @@ ROUTES = {
 
 def main() -> None:
     st.set_page_config(
-        page_title="EduTrack AI",
+        page_title="Edutrack IA",
         page_icon="🎓",
         layout="wide",
     )

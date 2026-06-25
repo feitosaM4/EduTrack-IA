@@ -45,7 +45,7 @@ def sidebar() -> str:
         <div style="display:flex;align-items:center;gap:10px;margin:8px 0 18px;">
           <span class="brand-mark">🎓</span>
           <div>
-            <div style="font-family:Poppins;font-size:1.08rem;font-weight:800;">EduTrack <span style="color:var(--accent);">AI</span></div>
+            <div style="font-family:Poppins;font-size:1.08rem;font-weight:800;">Edutrack <span style="color:var(--accent);">IA</span></div>
             <div class="muted" style="font-size:.72rem;">Academic Platform</div>
           </div>
         </div>
