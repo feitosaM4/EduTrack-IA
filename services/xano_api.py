@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from collections import deque
 from typing import Any
@@ -10,7 +11,10 @@ import requests
 import streamlit as st
 
 
-BASE_URL_XANO = "https://x8ki-letl-twmt.n7.xano.io/api:HRRA97nd"
+BASE_URL_XANO = os.environ.get(
+    "XANO_API_URL",
+    "https://x8ki-letl-twmt.n7.xano.io/api:HRRA97nd",
+)
 DEFAULT_TIMEOUT = 20
 MAX_REQUESTS_PER_WINDOW = 8
 RATE_WINDOW_SECONDS = 20

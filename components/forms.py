@@ -103,10 +103,19 @@ def cancel_button(label: str = "Cancelar", *, key: str | None = None) -> bool:
 
 
 def social_login_buttons() -> None:
-    _, center, _ = st.columns([1, 1.4, 1])
-    with center:
-        st.markdown('<div class="social-login-row">', unsafe_allow_html=True)
-        st.button("Google", key="login_google", use_container_width=True)
+    st.markdown('<div class="social-login-row">', unsafe_allow_html=True)
+    st.button("Entrar com Google", key="login_google", use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _login_actions_row() -> None:
+    remember_col, forgot_col = st.columns([1.15, 1], vertical_alignment="center")
+    with remember_col:
+        st.checkbox("Lembrar de mim", value=False, key="login_remember")
+    with forgot_col:
+        st.markdown('<div class="login-forgot-btn">', unsafe_allow_html=True)
+        if st.button("Esqueceu sua senha?", key="login_forgot"):
+            st.info("A recuperação de senha por e-mail estará disponível em breve.")
         st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -143,17 +152,18 @@ def login_page() -> None:
     if login_src:
         st.markdown(f'<img class="login-cosmos" src="{login_src}" alt="">', unsafe_allow_html=True)
 
-    left, right = st.columns([1.05, 1], gap="large")
+    left, right = st.columns([1.08, 0.92], gap="medium")
     with left:
+        st.markdown('<div class="login-copy-anchor"></div>', unsafe_allow_html=True)
         st.markdown(
             """
             <div class="login-copy">
-              <div style="display:flex;align-items:center;gap:12px;margin-bottom:50px;">
+              <div class="login-brand">
                 <span class="brand-mark">🎓</span>
-                <div style="font-family:Poppins;font-size:1.35rem;font-weight:800;color:#F8FAFC;">EduTrack <span style="color:#38BDF8;">AI</span></div>
+                <div class="login-brand-name">EduTrack <span>AI</span></div>
               </div>
-              <h1 style="font-size:3rem;line-height:1.18;color:#F8FAFC;margin-bottom:18px;">Seu semestre<br/>sob controle</h1>
-              <p style="font-size:1.05rem;color:#D7DDFB;max-width:420px;line-height:1.65;">
+              <h1 class="login-headline">Seu semestre<br/>sob controle</h1>
+              <p class="login-subcopy">
                 Planeje seus estudos, acompanhe suas tarefas e alcance seus objetivos.
               </p>
               <div class="benefit-grid">
@@ -182,13 +192,16 @@ def login_page() -> None:
         tab_login, tab_create = st.tabs(["Entrar", "Criar minha conta"])
         with tab_login:
             st.markdown(
-                '<h1 style="color:#F8FAFC;">Bem-vindo de volta!</h1>'
-                '<p style="color:#D7DDFB;">Entre na sua conta para continuar sua jornada.</p>',
+                '<div class="login-form-header">'
+                '<h1>Bem-vindo de volta!</h1>'
+                '<p>Entre na sua conta para continuar sua jornada.</p>'
+                '</div>',
                 unsafe_allow_html=True,
             )
             email = text_field("E-mail", placeholder="seu@email.com", key="login_email")
             senha = password_field("Senha", placeholder="Digite sua senha", key="login_password")
-            st.checkbox("Lembrar de mim", value=False)
+            _login_actions_row()
+            st.markdown('<div class="login-submit-gap">', unsafe_allow_html=True)
             if primary_button("Acessar meu painel  →", key="login_submit"):
                 if not email or not senha:
                     st.warning("Informe e-mail e senha para entrar.")
@@ -218,7 +231,8 @@ def login_page() -> None:
                         st.error(_friendly_http_error(exc, invalid_credentials="Credenciais inválidas."))
                     except requests.RequestException:
                         st.error("Erro de conexão com Xano. Verifique sua internet e tente novamente.")
-            st.caption("ou continue com")
+            st.markdown("</div>", unsafe_allow_html=True)
+            st.markdown('<p class="login-divider">ou continue com</p>', unsafe_allow_html=True)
             social_login_buttons()
         with tab_create:
             nome = text_field("Nome", placeholder="Manu Silva", key="signup_name")
