@@ -146,6 +146,36 @@ def _friendly_http_error(exc: requests.HTTPError, *, invalid_credentials: str) -
     return "Erro ao comunicar com o Xano."
 
 
+def _complete_auth(
+    resposta: dict | list,
+    email: str,
+    *,
+    nome: str | None = None,
+) -> bool:
+    token = extrair_token(resposta)
+    if not token:
+        return False
+
+    user = resposta.get("user") if isinstance(resposta, dict) else None
+    if not user and isinstance(resposta, dict) and resposta.get("user_id"):
+        user = {"id": resposta["user_id"], "email": email}
+        if nome:
+            user["name"] = nome
+
+    login_session(token, user=user, email=email)
+    try:
+        perfil_api = buscar_usuario(token)
+        if perfil_api:
+            login_session(
+                token,
+                user=perfil_api,
+                email=perfil_api.get("email", email),
+            )
+    except requests.RequestException:
+        pass
+    return True
+
+
 def login_page() -> None:
     login_src = asset_data_uri(str(LOGIN_IMAGE))
     inject_login_css()
@@ -219,22 +249,7 @@ def login_page() -> None:
                 else:
                     try:
                         resposta = login(email, senha)
-                        token = extrair_token(resposta)
-                        if token:
-                            user = resposta.get("user") if isinstance(resposta, dict) else None
-                            if not user and isinstance(resposta, dict) and resposta.get("user_id"):
-                                user = {"id": resposta["user_id"], "email": email}
-                            login_session(token, user=user, email=email)
-                            try:
-                                perfil_api = buscar_usuario(token)
-                                if perfil_api:
-                                    login_session(
-                                        token,
-                                        user=perfil_api,
-                                        email=perfil_api.get("email", email),
-                                    )
-                            except requests.RequestException:
-                                pass
+                        if _complete_auth(resposta, email):
                             st.rerun()
                         else:
                             st.error("Token não encontrado na resposta do Xano.")
@@ -259,8 +274,11 @@ def login_page() -> None:
                     st.warning("As senhas não coincidem.")
                 else:
                     try:
-                        cadastro({"name": nome, "email": email, "password": senha})
-                        st.success("Conta criada com sucesso! Agora faça login.")
+                        resposta = cadastro({"name": nome, "email": email, "password": senha})
+                        if _complete_auth(resposta, email, nome=nome):
+                            st.rerun()
+                        else:
+                            st.error("Conta criada, mas o token de acesso não foi retornado. Tente fazer login.")
                     except requests.HTTPError as exc:
                         st.error(_friendly_http_error(exc, invalid_credentials="Não foi possível criar a conta. Verifique os dados."))
                     except requests.RequestException:

@@ -6,12 +6,40 @@ from components.cards import card
 from utils.styles import page_title
 
 
+def _user_first_name() -> str:
+    user = st.session_state.get("user") or {}
+    if isinstance(user, dict):
+        full_name = str(user.get("name") or user.get("nome") or "").strip()
+        if full_name:
+            return full_name.split()[0]
+    email = st.session_state.get("user_email")
+    if isinstance(email, str) and email.strip():
+        return email.split("@")[0].capitalize()
+    return "estudante"
+
+
+def _greeting_message() -> str:
+    nome = _user_first_name()
+    return (
+        f"Ola, {nome}! Sou a Luna, sua assistente de estudos. "
+        "Posso ajudar com revisao, prazos e organizacao da semana."
+    )
+
+
+def _init_messages() -> None:
+    user_key = str(
+        (st.session_state.get("user") or {}).get("id")
+        or st.session_state.get("user_email")
+        or ""
+    )
+    if "messages" not in st.session_state or st.session_state.get("assistant_user_key") != user_key:
+        st.session_state.messages = [{"role": "assistant", "content": _greeting_message()}]
+        st.session_state.assistant_user_key = user_key
+
+
 def render() -> None:
     page_title("Assistente IA", "Chat de estudos com sugestoes rapidas.")
-    if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "assistant", "content": "Ola, Manu! Sou a Luna, sua assistente de estudos. Posso ajudar com revisao, prazos e organizacao da semana."}
-        ]
+    _init_messages()
     left, right = st.columns([1.8, 1], gap="large")
     with left:
         for message in st.session_state.messages:
