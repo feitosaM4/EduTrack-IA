@@ -8,6 +8,10 @@ O EduTrack IA centraliza em um único ambiente as principais informações da vi
 
 O projeto foi desenvolvido com foco em aprendizado prático, integração entre frontend e backend e construção de uma aplicação real.
 
+## Preview
+
+![Tela de login do EduTrack IA](assets/images/login-preview.png)
+
 ## Funcionalidades
 
 * Autenticação de usuários
