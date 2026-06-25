@@ -116,7 +116,7 @@ As definições em `apis/`, `tables/` e `functions/` são sincronizadas com o wo
 
 ### Imagem de login
 
-Coloque o arquivo `login-cosmos.png` em `assets/images/`. Sem essa imagem, o fundo em gradiente galáxia continua funcionando; apenas o elemento decorativo lateral deixa de aparecer.
+O arquivo `assets/images/login-cosmos.png` compõe o planeta decorativo da tela de autenticação. Sem ele, o fundo em gradiente galáxia continua funcionando normalmente.
 
 ### Streamlit
 
@@ -152,7 +152,7 @@ Com base no código e na estrutura atual do repositório:
 
 10. **Configuração por ambiente** — suporte inicial a `XANO_API_URL` via `.env`; demais segredos e URLs ainda podem ser centralizados conforme o projeto crescer.
 
-11. **Asset `login-cosmos.png`** — referenciado em `utils/styles.py`; adicionar o arquivo em `assets/images/` para completar o visual da tela de autenticação.
+11. **Asset `login-cosmos.png`** — presente em `assets/images/`; ajustes finos de posicionamento podem ser feitos conforme resolução.
 
 ## Licença
 
