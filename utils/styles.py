@@ -396,18 +396,20 @@ def inject_login_css() -> None:
         .login-brand-name span { color: #38BDF8; }
         .login-headline {
           font-family: Poppins, Inter, sans-serif;
-          font-size: clamp(2.1rem, 3.2vw, 3rem);
-          line-height: 1.12;
+          font-size: clamp(2.35rem, 3.6vw, 3.35rem);
+          line-height: 1.1;
           font-weight: 800;
           color: #FFFFFF;
-          margin: 0 0 0.85rem;
-          letter-spacing: -0.02em;
+          margin: 0 0 0.75rem;
+          letter-spacing: -0.025em;
+          text-shadow: 0 2px 28px rgba(15, 23, 42, 0.45);
         }
         .login-headline-accent {
-          background: linear-gradient(90deg, #38BDF8 0%, #818CF8 52%, #C084FC 100%);
+          background: linear-gradient(90deg, #38BDF8 0%, #818CF8 50%, #C084FC 100%);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
+          text-shadow: none;
         }
         .login-subcopy {
           font-size: clamp(0.95rem, 1.1vw, 1.05rem);
@@ -480,36 +482,45 @@ def inject_login_css() -> None:
           margin-right: 0;
           background: rgba(15, 23, 42, 0.42);
           border: 1px solid rgba(255,255,255,0.18);
-          border-radius: 20px;
-          padding: 22px 24px 20px;
+          border-radius: 18px;
+          padding: 18px 22px 16px;
           box-shadow:
             0 24px 64px rgba(15,23,42,0.38),
             inset 0 1px 0 rgba(255,255,255,0.08);
           backdrop-filter: blur(20px);
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stVerticalBlock"] {
+          gap: 0.35rem !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) .stElementContainer {
+          margin-bottom: 0 !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stMarkdown"] {
+          margin-bottom: 0 !important;
         }
 
         /* ── Login: formulário ────────────────────────────── */
         .login-form-header h1 {
           color: #FFFFFF;
           font-family: Poppins, Inter, sans-serif;
-          font-size: 1.45rem;
-          font-weight: 800;
+          font-size: 1.3rem;
+          font-weight: 700;
           line-height: 1.2;
-          margin: 0 0 4px;
+          margin: 0 0 2px;
           letter-spacing: -0.01em;
         }
         .login-form-header p {
           color: #E2E8FF;
-          font-size: 0.88rem;
-          line-height: 1.45;
-          margin: 0 0 12px;
+          font-size: 0.84rem;
+          line-height: 1.4;
+          margin: 0 0 8px;
         }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTabs"] {
           background: transparent !important;
           border: none !important;
           box-shadow: none !important;
           padding: 0 !important;
-          margin-bottom: 0.15rem;
+          margin-bottom: 0 !important;
         }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTabs"] button p {
           color: #C7D2FE !important;
@@ -523,21 +534,22 @@ def inject_login_css() -> None:
           font-weight: 700 !important;
         }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] {
-          margin-bottom: 0.15rem;
+          margin-bottom: 0 !important;
         }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] label {
           color: #E8EEFF !important;
-          font-size: 0.82rem !important;
+          font-size: 0.8rem !important;
           font-weight: 600 !important;
-          margin-bottom: 0.2rem !important;
+          margin-bottom: 0.12rem !important;
+          padding-bottom: 0 !important;
         }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input {
           background: rgba(255,255,255,0.96) !important;
           color: #1E1B4B !important;
           border: 1px solid rgba(255,255,255,0.28) !important;
-          border-radius: 11px !important;
-          min-height: 2.65rem;
-          font-size: 0.92rem !important;
+          border-radius: 10px !important;
+          min-height: 2.45rem;
+          font-size: 0.9rem !important;
           box-shadow: 0 2px 8px rgba(15,23,42,0.08);
         }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input::placeholder {
@@ -547,80 +559,56 @@ def inject_login_css() -> None:
           border-color: rgba(56,189,248,0.65) !important;
           box-shadow: 0 0 0 3px rgba(56,189,248,0.18) !important;
         }
+        .login-actions-row {
+          margin: 0.1rem 0 0.2rem;
+        }
         .login-actions-row [data-testid="stCheckbox"] {
-          margin: 0.15rem 0 0.35rem;
+          margin: 0 !important;
         }
         .login-actions-row [data-testid="stCheckbox"] label,
         .login-actions-row [data-testid="stCheckbox"] label p,
         .login-actions-row [data-testid="stCheckbox"] label span {
           color: #E2E8FF !important;
-          font-size: 0.82rem !important;
+          font-size: 0.78rem !important;
         }
-        .login-forgot-btn {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          min-height: 1.75rem;
-          padding-top: 0.15rem;
+        .login-forgot-link-text {
+          display: block;
+          text-align: right;
+          color: rgba(199, 210, 254, 0.75);
+          font-size: 0.76rem;
+          font-weight: 500;
+          text-decoration: none;
+          line-height: 1.4;
+          letter-spacing: 0.01em;
         }
-        .login-forgot-btn .stButton { width: auto; }
-        .login-forgot-btn .stButton > button {
-          background: transparent !important;
-          border: none !important;
-          color: #38BDF8 !important;
-          box-shadow: none !important;
-          padding: 0 !important;
-          min-height: auto !important;
-          font-size: 0.82rem !important;
-          font-weight: 600 !important;
+        .login-forgot-link-text:hover {
+          color: #E2E8FF;
           text-decoration: underline;
-          text-underline-offset: 3px;
+          text-underline-offset: 2px;
         }
-        .login-forgot-btn .stButton > button:hover {
-          color: #7DD3FC !important;
-          background: transparent !important;
+        .login-forgot-hint {
+          color: rgba(199, 210, 254, 0.72);
+          font-size: 0.74rem;
+          line-height: 1.35;
+          margin: 0 0 0.15rem;
+          text-align: right;
+        }
+        .login-submit-gap {
+          margin-top: 0.15rem;
         }
         .login-submit-gap .stButton {
-          margin-top: 0.2rem;
-          margin-bottom: 0;
-        }
-        .login-divider {
-          text-align: center;
-          color: #C7D2FE;
-          font-size: 0.78rem;
-          margin: 0.25rem 0 0.35rem;
-          letter-spacing: 0.02em;
-        }
-        .social-login-row { margin-top: 0; }
-        .social-login-row .stButton {
-          width: 100%;
-          margin: 0;
-        }
-        .social-login-row .stButton > button {
-          width: 100%;
-          min-height: 2.55rem !important;
-          background: rgba(255,255,255,0.07) !important;
-          border: 1px solid rgba(255,255,255,0.16) !important;
-          color: #FFFFFF !important;
-          border-radius: 11px !important;
-          font-size: 0.88rem !important;
-          font-weight: 600 !important;
-          backdrop-filter: blur(10px);
-          box-shadow: none !important;
-        }
-        .social-login-row .stButton > button:hover {
-          background: rgba(255,255,255,0.13) !important;
-          border-color: rgba(255,255,255,0.24) !important;
+          margin: 0 !important;
         }
         div[data-testid="column"]:has(.login-panel-anchor) .button-scope-save .stButton > button,
         div[data-testid="column"]:has(.login-panel-anchor) .stButton > button[kind="primary"] {
-          min-height: 2.7rem !important;
+          min-height: 2.5rem !important;
           background: linear-gradient(90deg, #4A5FE7 0%, #7B3FF2 55%, #A855F7 100%) !important;
           border: 1px solid rgba(255,255,255,0.22) !important;
           color: #FFFFFF !important;
           font-weight: 700 !important;
-          border-radius: 11px !important;
-          box-shadow: 0 10px 28px rgba(76,29,149,0.32) !important;
+          font-size: 0.9rem !important;
+          border-radius: 10px !important;
+          box-shadow: 0 8px 22px rgba(76,29,149,0.28) !important;
         }
         div[data-testid="column"]:has(.login-panel-anchor) .button-scope-save .stButton > button:hover,
         div[data-testid="column"]:has(.login-panel-anchor) .stButton > button[kind="primary"]:hover {

@@ -102,23 +102,22 @@ def cancel_button(label: str = "Cancelar", *, key: str | None = None) -> bool:
     return _scoped_button(label, variant="cancel", key=key)
 
 
-def social_login_buttons() -> None:
-    st.markdown('<div class="social-login-row">', unsafe_allow_html=True)
-    st.button("Entrar com Google", key="login_google", use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-
 def _login_actions_row() -> None:
     st.markdown('<div class="login-actions-row">', unsafe_allow_html=True)
-    remember_col, forgot_col = st.columns([1.15, 1], vertical_alignment="center")
+    remember_col, forgot_col = st.columns([1.2, 1], vertical_alignment="center")
     with remember_col:
         st.checkbox("Lembrar de mim", value=False, key="login_remember")
     with forgot_col:
-        st.markdown('<div class="login-forgot-btn">', unsafe_allow_html=True)
-        if st.button("Esqueceu sua senha?", key="login_forgot"):
-            st.info("A recuperação de senha por e-mail estará disponível em breve.")
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(
+            '<a class="login-forgot-link-text" href="?forgot=1" target="_self">Esqueceu sua senha?</a>',
+            unsafe_allow_html=True,
+        )
     st.markdown("</div>", unsafe_allow_html=True)
+    if st.query_params.get("forgot"):
+        st.markdown(
+            '<p class="login-forgot-hint">A recuperação de senha por e-mail estará disponível em breve.</p>',
+            unsafe_allow_html=True,
+        )
 
 
 def button_style_reference() -> None:
@@ -165,7 +164,7 @@ def login_page() -> None:
                 <div class="login-brand-name">EduTrack <span>AI</span></div>
               </div>
               <h1 class="login-headline">
-                Seu semestre<br><span class="login-headline-accent">sob controle</span>
+                Seu semestre sob<br><span class="login-headline-accent">controle</span>
               </h1>
               <p class="login-subcopy">
                 Organize disciplinas, tarefas e notas em um painel acadêmico inteligente
@@ -237,8 +236,6 @@ def login_page() -> None:
                     except requests.RequestException:
                         st.error("Erro de conexão com Xano. Verifique sua internet e tente novamente.")
             st.markdown("</div>", unsafe_allow_html=True)
-            st.markdown('<p class="login-divider">ou continue com</p>', unsafe_allow_html=True)
-            social_login_buttons()
         with tab_create:
             nome = text_field("Nome", placeholder="Manu Silva", key="signup_name")
             email = text_field("E-mail", placeholder="seu@email.com", key="signup_email")
