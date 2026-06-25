@@ -209,21 +209,6 @@ def inject_css(hide_sidebar: bool = False, theme: dict | None = None) -> None:
         }}
         .disc-card h4 {{ margin: 0 0 6px; color: var(--text); }}
         .disc-card .muted {{ font-size: .84rem; }}
-        .social-login-row {{
-          display: flex; justify-content: center; align-items: center;
-        }}
-        .social-login-row .stButton {{
-          width: 220px; max-width: 100%;
-        }}
-        .social-login-row .stButton > button {{
-          background: rgba(255,255,255,0.08) !important;
-          border-color: rgba(255,255,255,0.15) !important;
-          color: #FFFFFF !important;
-        }}
-        .social-login-row .stButton > button:hover {{
-          background: rgba(255,255,255,0.15) !important;
-          color: #FFFFFF !important;
-        }}
         .card {{
           background: #fff; border: 1px solid var(--border); border-radius: 12px;
           padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,.04); height: 100%;
@@ -233,72 +218,6 @@ def inject_css(hide_sidebar: bool = False, theme: dict | None = None) -> None:
           border-radius: 22px; padding: 28px; box-shadow: 0 22px 70px rgba(15,23,42,0.34);
           backdrop-filter: blur(16px);
         }}
-        .login-bg {{
-          position: fixed; inset: 0; z-index: 0; pointer-events: none;
-          background:
-            radial-gradient(circle at 20% 18%, rgba(56,189,248,.22), transparent 24%),
-            radial-gradient(circle at 78% 70%, rgba(76,29,149,.58), transparent 34%),
-            linear-gradient(135deg, #0F172A 0%, #312E81 46%, #1E1B4B 72%, #3B1D5F 100%);
-        }}
-        .login-bg::before {{
-          content: ""; position: absolute; inset: 0;
-          background-image:
-            radial-gradient(circle, rgba(255,255,255,.82) 0 1px, transparent 1.7px),
-            radial-gradient(circle, rgba(56,189,248,.48) 0 1px, transparent 1.8px);
-          background-size: 96px 96px, 142px 142px;
-          background-position: 10px 20px, 70px 42px;
-          opacity: .38;
-        }}
-        .login-cosmos {{
-          position: fixed; z-index: 0; pointer-events: none; right: -60px; bottom: -46px;
-          width: min(52vw, 780px); opacity: .94; filter: drop-shadow(0 28px 48px rgba(15,23,42,.34));
-        }}
-        .login-copy {{
-          position: relative; z-index: 1; min-height: auto; display: flex;
-          flex-direction: column; justify-content: center; padding: 8px 0 4px;
-        }}
-        .login-brand {{
-          display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
-        }}
-        .login-brand-name {{
-          font-family: Poppins, Inter, sans-serif; font-size: 1.28rem; font-weight: 800; color: #F8FAFC;
-        }}
-        .login-brand-name span {{ color: #38BDF8; }}
-        .login-headline {{
-          font-size: clamp(2rem, 2.8vw, 2.55rem); line-height: 1.16; color: #F8FAFC; margin: 0 0 14px;
-        }}
-        .login-subcopy {{
-          font-size: 1rem; color: #D7DDFB; max-width: 420px; line-height: 1.6; margin: 0;
-        }}
-        .login-panel {{ position: relative; z-index: 1; padding-top: 0; }}
-        .benefit-grid {{
-          display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap;
-          max-width: 620px; margin-top: 26px;
-        }}
-        .benefit-card {{
-          flex: 1 1 160px; min-width: 152px;
-          padding: 15px 16px; border-radius: 18px;
-          background: rgba(255,255,255,0.13);
-          border: 1px solid rgba(255,255,255,0.24);
-          box-shadow: 0 16px 36px rgba(15,23,42,0.24);
-          backdrop-filter: blur(16px);
-          text-align: center;
-        }}
-        .benefit-card .benefit-icon {{
-          margin: 0 auto 12px auto;
-          width: 42px; height: 42px; border-radius: 14px;
-          display: flex; align-items: center; justify-content: center;
-          background: linear-gradient(135deg, #4A5FE7 0%, #7B3FF2 100%);
-          color: #FFFFFF;
-          border: 1px solid rgba(255,255,255,0.24);
-          box-shadow: 0 10px 24px rgba(76,29,149,0.25);
-          font-size: 1.05rem;
-        }}
-        .benefit-card strong {{
-          display: block; color: #F8FAFC; font-family: Poppins, Inter, sans-serif;
-          font-size: .98rem; margin-bottom: 3px; text-align: center;
-        }}
-        .benefit-card span {{ color: #D7DDFB; font-size: .82rem; line-height: 1.35; text-align: center; display: block; }}
         .dashboard-hero {{
           position: relative; overflow: hidden; min-height: 214px; margin-bottom: 18px;
           border-radius: 18px; border: 1px solid rgba(255,255,255,.78);
@@ -380,20 +299,8 @@ def inject_css(hide_sidebar: bool = False, theme: dict | None = None) -> None:
         @media (max-width: 760px) {{
           .block-container {{ padding-left: 1rem; padding-right: 1rem; }}
           .soft-card {{ padding: 18px; }}
-          .login-cosmos {{ width: 720px; right: -420px; bottom: -90px; opacity: .72; }}
-          .login-copy {{ padding-top: 6px; }}
-          .login-brand {{ margin-bottom: 18px; }}
-          .benefit-grid {{ gap: 10px; margin-top: 18px; }}
-          .benefit-card {{ flex-basis: 100%; }}
-          .social-login-row {{ justify-content: center; }}
-          .social-login-row .stButton {{ width: 100%; max-width: 220px; }}
           .dashboard-hero {{ padding: 20px; min-height: 260px; }}
           .calendar-cell {{ min-height: 72px; }}
-        }}
-        @media (min-width: 1200px) {{
-          .stApp:has(.login-bg) .block-container {{
-            max-width: 1120px;
-          }}
         }}
         </style>
         """,
@@ -405,80 +312,266 @@ def inject_login_css() -> None:
     st.markdown(
         """
         <style>
+        /* ── Login: fundo galáxia ───────────────────────────── */
+        .login-bg {
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 18% 20%, rgba(56,189,248,.24), transparent 28%),
+            radial-gradient(circle at 82% 72%, rgba(124,58,237,.42), transparent 36%),
+            radial-gradient(circle at 55% 45%, rgba(236,72,153,.12), transparent 40%),
+            linear-gradient(135deg, #0B1224 0%, #1E1B4B 42%, #312E81 68%, #3B1D5F 100%);
+        }
+        .login-bg::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image:
+            radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 1.6px),
+            radial-gradient(circle, rgba(56,189,248,.4) 0 1px, transparent 1.7px);
+          background-size: 92px 92px, 138px 138px;
+          background-position: 12px 18px, 64px 38px;
+          opacity: .34;
+        }
+        .login-cosmos {
+          position: fixed;
+          z-index: 0;
+          pointer-events: none;
+          right: -4vw;
+          bottom: -5vh;
+          width: min(46vw, 680px);
+          opacity: .78;
+          filter: drop-shadow(0 24px 48px rgba(15,23,42,.28));
+        }
+
+        /* ── Login: container e grid ──────────────────────── */
         .stApp:has(.login-bg) .block-container {
-          max-width: 1080px;
-          padding-top: clamp(0.75rem, 2.5vh, 1.5rem);
-          padding-bottom: 1rem;
+          max-width: 1280px;
+          padding: clamp(0.85rem, 2.2vh, 1.6rem) clamp(1.25rem, 3.5vw, 2.75rem) 0.85rem;
           min-height: auto;
         }
         .stApp:has(.login-bg) [data-testid="stAppViewContainer"] > .main {
           overflow-x: hidden;
         }
-        div[data-testid="stHorizontalBlock"]:has(.login-copy-anchor),
-        div[data-testid="stHorizontalBlock"]:has(.login-panel-anchor) {
-          align-items: center;
-          gap: 1.25rem;
+        .stApp:has(.login-bg) [data-testid="stMainBlockContainer"] {
+          padding-bottom: 0.5rem;
         }
-        div[data-testid="column"]:has(.login-copy-anchor) {
-          display: flex;
-          align-items: center;
-        }
-        div[data-testid="column"]:has(.login-panel-anchor) {
-          display: flex;
-          align-items: center;
-          padding-top: 0 !important;
-        }
-        div[data-testid="column"]:has(.login-panel-anchor) > div[data-testid="stVerticalBlock"] {
-          width: 100%;
-          max-width: 400px;
-          margin: 0 auto;
-          background: rgba(255,255,255,0.13);
-          border: 1px solid rgba(255,255,255,0.24);
-          border-radius: 22px;
-          padding: 20px 24px 22px;
-          box-shadow: 0 22px 70px rgba(15,23,42,0.34);
-          backdrop-filter: blur(16px);
+        div[data-testid="stHorizontalBlock"]:has(.login-copy-anchor) {
+          align-items: stretch;
+          gap: clamp(1.25rem, 3vw, 2.75rem);
         }
         .login-copy-anchor,
         .login-panel-anchor {
           display: none !important;
         }
+
+        /* ── Login: coluna esquerda (apresentação) ────────── */
+        div[data-testid="column"]:has(.login-copy-anchor) {
+          display: flex;
+          align-items: center;
+          padding-right: 0.5rem !important;
+        }
+        .login-copy {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          max-width: 560px;
+          padding: 0.25rem 0;
+        }
+        .login-brand {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: clamp(1.25rem, 2.5vh, 1.75rem);
+        }
+        .login-brand-name {
+          font-family: Poppins, Inter, sans-serif;
+          font-size: 1.3rem;
+          font-weight: 800;
+          color: #FFFFFF;
+          letter-spacing: -0.01em;
+        }
+        .login-brand-name span { color: #38BDF8; }
+        .login-headline {
+          font-family: Poppins, Inter, sans-serif;
+          font-size: clamp(2.1rem, 3.2vw, 3rem);
+          line-height: 1.12;
+          font-weight: 800;
+          color: #FFFFFF;
+          margin: 0 0 0.85rem;
+          letter-spacing: -0.02em;
+        }
+        .login-headline-accent {
+          background: linear-gradient(90deg, #38BDF8 0%, #818CF8 52%, #C084FC 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+        .login-subcopy {
+          font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+          color: #E8EEFF;
+          max-width: 480px;
+          line-height: 1.65;
+          margin: 0;
+        }
+        .benefit-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: clamp(1.25rem, 2.5vh, 1.75rem);
+          max-width: 520px;
+        }
+        .benefit-card {
+          padding: 12px 10px;
+          border-radius: 14px;
+          background: rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.22);
+          box-shadow: 0 12px 32px rgba(15,23,42,0.22);
+          backdrop-filter: blur(14px);
+          text-align: center;
+          transition: border-color .2s ease, transform .2s ease;
+        }
+        .benefit-card:hover {
+          border-color: rgba(56,189,248,0.35);
+          transform: translateY(-1px);
+        }
+        .benefit-card .benefit-icon {
+          margin: 0 auto 8px;
+          width: 34px;
+          height: 34px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #4A5FE7 0%, #A855F7 100%);
+          border: 1px solid rgba(255,255,255,0.2);
+          box-shadow: 0 8px 18px rgba(76,29,149,0.28);
+          font-size: 0.92rem;
+        }
+        .benefit-card strong {
+          display: block;
+          color: #FFFFFF;
+          font-family: Poppins, Inter, sans-serif;
+          font-size: 0.82rem;
+          font-weight: 700;
+          margin-bottom: 2px;
+        }
+        .benefit-card span {
+          color: #DDE4FF;
+          font-size: 0.72rem;
+          line-height: 1.35;
+          display: block;
+        }
+
+        /* ── Login: coluna direita (painel glass) ─────────── */
+        div[data-testid="column"]:has(.login-panel-anchor) {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding-top: 0 !important;
+          padding-left: 0.5rem !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) > div[data-testid="stVerticalBlock"] {
+          width: 100%;
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: 0;
+          background: rgba(15, 23, 42, 0.42);
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: 20px;
+          padding: 22px 24px 20px;
+          box-shadow:
+            0 24px 64px rgba(15,23,42,0.38),
+            inset 0 1px 0 rgba(255,255,255,0.08);
+          backdrop-filter: blur(20px);
+        }
+
+        /* ── Login: formulário ────────────────────────────── */
         .login-form-header h1 {
-          color: #F8FAFC;
-          font-size: 1.55rem;
+          color: #FFFFFF;
+          font-family: Poppins, Inter, sans-serif;
+          font-size: 1.45rem;
+          font-weight: 800;
           line-height: 1.2;
-          margin: 0 0 6px;
+          margin: 0 0 4px;
+          letter-spacing: -0.01em;
         }
         .login-form-header p {
-          color: #D7DDFB;
-          font-size: 0.92rem;
+          color: #E2E8FF;
+          font-size: 0.88rem;
           line-height: 1.45;
-          margin: 0 0 14px;
+          margin: 0 0 12px;
         }
-        div[data-testid="column"]:has(.login-panel-anchor) div[data-testid="stTextInput"] {
-          margin-bottom: 0.2rem;
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTabs"] {
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin-bottom: 0.15rem;
         }
-        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stCheckbox"] {
-          margin-top: 0.1rem;
-          margin-bottom: 0;
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTabs"] button p {
+          color: #C7D2FE !important;
+          font-size: 0.88rem !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTabs"] [aria-selected="true"] {
+          border-bottom: 2px solid #38BDF8 !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTabs"] [aria-selected="true"] p {
+          color: #38BDF8 !important;
+          font-weight: 700 !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] {
+          margin-bottom: 0.15rem;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] label {
+          color: #E8EEFF !important;
+          font-size: 0.82rem !important;
+          font-weight: 600 !important;
+          margin-bottom: 0.2rem !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input {
+          background: rgba(255,255,255,0.96) !important;
+          color: #1E1B4B !important;
+          border: 1px solid rgba(255,255,255,0.28) !important;
+          border-radius: 11px !important;
+          min-height: 2.65rem;
+          font-size: 0.92rem !important;
+          box-shadow: 0 2px 8px rgba(15,23,42,0.08);
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input::placeholder {
+          color: rgba(30,27,75,0.45) !important;
+        }
+        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input:focus {
+          border-color: rgba(56,189,248,0.65) !important;
+          box-shadow: 0 0 0 3px rgba(56,189,248,0.18) !important;
+        }
+        .login-actions-row [data-testid="stCheckbox"] {
+          margin: 0.15rem 0 0.35rem;
+        }
+        .login-actions-row [data-testid="stCheckbox"] label,
+        .login-actions-row [data-testid="stCheckbox"] label p,
+        .login-actions-row [data-testid="stCheckbox"] label span {
+          color: #E2E8FF !important;
+          font-size: 0.82rem !important;
         }
         .login-forgot-btn {
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          min-height: 2.2rem;
+          min-height: 1.75rem;
+          padding-top: 0.15rem;
         }
-        .login-forgot-btn .stButton {
-          width: auto;
-        }
+        .login-forgot-btn .stButton { width: auto; }
         .login-forgot-btn .stButton > button {
           background: transparent !important;
           border: none !important;
           color: #38BDF8 !important;
           box-shadow: none !important;
-          padding: 0 0 0 4px !important;
+          padding: 0 !important;
           min-height: auto !important;
-          font-size: 0.86rem !important;
+          font-size: 0.82rem !important;
           font-weight: 600 !important;
           text-decoration: underline;
           text-underline-offset: 3px;
@@ -488,90 +581,92 @@ def inject_login_css() -> None:
           background: transparent !important;
         }
         .login-submit-gap .stButton {
-          margin-top: 0.35rem;
+          margin-top: 0.2rem;
           margin-bottom: 0;
         }
         .login-divider {
           text-align: center;
-          color: #D7DDFB;
-          font-size: 0.8rem;
-          margin: 0.3rem 0 0.4rem;
-          letter-spacing: 0.01em;
+          color: #C7D2FE;
+          font-size: 0.78rem;
+          margin: 0.25rem 0 0.35rem;
+          letter-spacing: 0.02em;
         }
-        [data-testid="stTextInput"] label,
-        [data-testid="stTabs"] button p {
-          color: #D7DDFB !important;
-        }
-        [data-testid="stCheckbox"] label,
-        [data-testid="stCheckbox"] label p,
-        [data-testid="stCheckbox"] label span,
-        [data-testid="stCheckbox"] p {
-          color: #D7DDFB !important;
-        }
-        [data-testid="stTextInput"] input {
-          background: rgba(255,255,255,0.94) !important;
-          color: #241B33 !important;
-          border: 1px solid rgba(255,255,255,0.32) !important;
-        }
-        [data-testid="stTextInput"] input::placeholder {
-          color: rgba(36,27,51,.58) !important;
-        }
-        [data-testid="stTabs"] [aria-selected="true"] p {
-          color: #38BDF8 !important;
-          font-weight: 800 !important;
-        }
-        [data-testid="stTabs"] {
-          background: transparent !important;
-          border: none !important;
-          box-shadow: none !important;
-          padding: 0 !important;
-          margin-bottom: 0.35rem;
-        }
-        .social-login-row {
-          display: flex;
-          justify-content: stretch;
-          align-items: center;
-          margin-top: 0;
-        }
+        .social-login-row { margin-top: 0; }
         .social-login-row .stButton {
           width: 100%;
-          margin-top: 0;
+          margin: 0;
         }
-        .social-login-row .stButton > button,
-        div[data-testid="column"]:has(.social-login-row) div[data-testid="stButton"] > button {
+        .social-login-row .stButton > button {
           width: 100%;
-          background: rgba(255,255,255,0.08) !important;
-          border: 1px solid rgba(255,255,255,0.15) !important;
+          min-height: 2.55rem !important;
+          background: rgba(255,255,255,0.07) !important;
+          border: 1px solid rgba(255,255,255,0.16) !important;
           color: #FFFFFF !important;
-          backdrop-filter: blur(12px);
-          border-radius: 12px !important;
-          min-height: 2.35rem !important;
+          border-radius: 11px !important;
+          font-size: 0.88rem !important;
+          font-weight: 600 !important;
+          backdrop-filter: blur(10px);
+          box-shadow: none !important;
         }
-        .social-login-row .stButton > button:hover,
-        div[data-testid="column"]:has(.social-login-row) div[data-testid="stButton"] > button:hover {
-          background: rgba(255,255,255,0.15) !important;
-          color: #FFFFFF !important;
+        .social-login-row .stButton > button:hover {
+          background: rgba(255,255,255,0.13) !important;
+          border-color: rgba(255,255,255,0.24) !important;
         }
+        div[data-testid="column"]:has(.login-panel-anchor) .button-scope-save .stButton > button,
         div[data-testid="column"]:has(.login-panel-anchor) .stButton > button[kind="primary"] {
-          background: linear-gradient(90deg, #4A5FE7 0%, #7B3FF2 100%) !important;
-          border: 1px solid rgba(255,255,255,0.26) !important;
-          color: #F8FAFC !important;
+          min-height: 2.7rem !important;
+          background: linear-gradient(90deg, #4A5FE7 0%, #7B3FF2 55%, #A855F7 100%) !important;
+          border: 1px solid rgba(255,255,255,0.22) !important;
+          color: #FFFFFF !important;
+          font-weight: 700 !important;
+          border-radius: 11px !important;
+          box-shadow: 0 10px 28px rgba(76,29,149,0.32) !important;
         }
+        div[data-testid="column"]:has(.login-panel-anchor) .button-scope-save .stButton > button:hover,
         div[data-testid="column"]:has(.login-panel-anchor) .stButton > button[kind="primary"]:hover {
-          background: linear-gradient(90deg, #5B6EFA 0%, #8B5CF6 100%) !important;
+          background: linear-gradient(90deg, #5B6EFA 0%, #8B5CF6 55%, #C084FC 100%) !important;
+          transform: translateY(-1px);
         }
-        @media (max-width: 900px) {
-          div[data-testid="stHorizontalBlock"]:has(.login-copy-anchor),
-          div[data-testid="stHorizontalBlock"]:has(.login-panel-anchor) {
+
+        /* ── Login: responsivo ─────────────────────────────── */
+        @media (min-width: 1100px) {
+          .stApp:has(.login-bg) .block-container { max-width: 1320px; }
+          .benefit-grid { max-width: 540px; }
+        }
+        @media (max-width: 960px) {
+          div[data-testid="stHorizontalBlock"]:has(.login-copy-anchor) {
             flex-direction: column;
-            align-items: stretch;
+            gap: 1.25rem;
+          }
+          div[data-testid="column"]:has(.login-copy-anchor),
+          div[data-testid="column"]:has(.login-panel-anchor) {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+          div[data-testid="column"]:has(.login-panel-anchor) {
+            justify-content: center;
           }
           div[data-testid="column"]:has(.login-panel-anchor) > div[data-testid="stVerticalBlock"] {
             max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
           }
-          .login-headline {
-            font-size: 1.85rem !important;
+          .login-copy { max-width: 100%; }
+          .benefit-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            max-width: 100%;
           }
+          .login-cosmos {
+            width: min(70vw, 520px);
+            right: -18vw;
+            bottom: -8vh;
+            opacity: .55;
+          }
+        }
+        @media (max-width: 640px) {
+          .benefit-grid { grid-template-columns: 1fr; }
+          .login-headline { font-size: 1.9rem; }
+          .login-cosmos { opacity: .4; }
         }
         </style>
         """,

@@ -109,6 +109,7 @@ def social_login_buttons() -> None:
 
 
 def _login_actions_row() -> None:
+    st.markdown('<div class="login-actions-row">', unsafe_allow_html=True)
     remember_col, forgot_col = st.columns([1.15, 1], vertical_alignment="center")
     with remember_col:
         st.checkbox("Lembrar de mim", value=False, key="login_remember")
@@ -117,6 +118,7 @@ def _login_actions_row() -> None:
         if st.button("Esqueceu sua senha?", key="login_forgot"):
             st.info("A recuperação de senha por e-mail estará disponível em breve.")
         st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def button_style_reference() -> None:
@@ -152,7 +154,7 @@ def login_page() -> None:
     if login_src:
         st.markdown(f'<img class="login-cosmos" src="{login_src}" alt="">', unsafe_allow_html=True)
 
-    left, right = st.columns([1.08, 0.92], gap="medium")
+    left, right = st.columns([1.22, 0.78], gap="large")
     with left:
         st.markdown('<div class="login-copy-anchor"></div>', unsafe_allow_html=True)
         st.markdown(
@@ -162,9 +164,12 @@ def login_page() -> None:
                 <span class="brand-mark">🎓</span>
                 <div class="login-brand-name">EduTrack <span>AI</span></div>
               </div>
-              <h1 class="login-headline">Seu semestre<br/>sob controle</h1>
+              <h1 class="login-headline">
+                Seu semestre<br><span class="login-headline-accent">sob controle</span>
+              </h1>
               <p class="login-subcopy">
-                Planeje seus estudos, acompanhe suas tarefas e alcance seus objetivos.
+                Organize disciplinas, tarefas e notas em um painel acadêmico inteligente
+                feito para acompanhar seu semestre com clareza.
               </p>
               <div class="benefit-grid">
                 <div class="benefit-card">
