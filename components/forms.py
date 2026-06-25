@@ -164,7 +164,8 @@ def login_page() -> None:
                 <div class="login-brand-name">EduTrack <span>AI</span></div>
               </div>
               <h1 class="login-headline">
-                Seu semestre sob<br><span class="login-headline-accent">controle</span>
+                <span class="login-headline-main">Seu semestre sob</span><br>
+                <span class="login-headline-accent">controle</span>
               </h1>
               <p class="login-subcopy">
                 Organize disciplinas, tarefas e notas em um painel acadêmico inteligente
@@ -172,17 +173,23 @@ def login_page() -> None:
               </p>
               <div class="benefit-grid">
                 <div class="benefit-card">
-                  <div class="benefit-icon">🛡️</div>
+                  <div class="benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18 6 2.25V11.1c0 3.72-2.55 7.18-6 8.17-3.45-.99-6-4.45-6-8.17V6.43l6-2.25z"/></svg>
+                  </div>
                   <strong>Seguro</strong>
                   <span>Seus dados protegidos</span>
                 </div>
                 <div class="benefit-card">
-                  <div class="benefit-icon">🧠</div>
+                  <div class="benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+                  </div>
                   <strong>Inteligente</strong>
                   <span>IA para apoiar seus estudos</span>
                 </div>
                 <div class="benefit-card">
-                  <div class="benefit-icon">👤</div>
+                  <div class="benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                  </div>
                   <strong>Personalizado</strong>
                   <span>Feito para sua rotina</span>
                 </div>
@@ -237,10 +244,10 @@ def login_page() -> None:
                         st.error("Erro de conexão com Xano. Verifique sua internet e tente novamente.")
             st.markdown("</div>", unsafe_allow_html=True)
         with tab_create:
-            nome = text_field("Nome", placeholder="Manu Silva", key="signup_name")
+            nome = text_field("Nome", placeholder=" Nome completo", key="signup_name")
             email = text_field("E-mail", placeholder="seu@email.com", key="signup_email")
             senha = password_field("Senha", placeholder="Crie uma senha", key="signup_password")
-            confirmar = password_field("Confirmar senha", placeholder="Repita a senha", key="signup_confirm")
+            confirmar = password_field("Confirmar senha", placeholder="Confirmar senha", key="signup_confirm")
             if primary_button("Criar conta", key="signup_submit"):
                 if not nome:
                     st.warning("Informe seu nome para criar a conta.")
