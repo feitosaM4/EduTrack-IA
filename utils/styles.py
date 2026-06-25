@@ -250,19 +250,12 @@ def inject_css(hide_sidebar: bool = False, theme: dict | None = None) -> None:
           opacity: .38;
         }}
         .login-cosmos {{
-          position: fixed; z-index: 0; pointer-events: none;
-          left: 50%; top: 54%; transform: translate(-50%, -50%);
-          width: min(62vw, 860px); opacity: .88;
-          filter: drop-shadow(0 28px 48px rgba(15,23,42,.34));
-        }}
-        .login-top-brand {{
-          position: relative; z-index: 1;
-          display: flex; align-items: center; gap: 12px;
-          margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
+          position: fixed; z-index: 0; pointer-events: none; right: -60px; bottom: -46px;
+          width: min(52vw, 780px); opacity: .94; filter: drop-shadow(0 28px 48px rgba(15,23,42,.34));
         }}
         .login-copy {{
           position: relative; z-index: 1; min-height: auto; display: flex;
-          flex-direction: column; justify-content: center; padding: 4px 0 0;
+          flex-direction: column; justify-content: center; padding: 8px 0 4px;
         }}
         .login-brand {{
           display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
@@ -273,12 +266,6 @@ def inject_css(hide_sidebar: bool = False, theme: dict | None = None) -> None:
         .login-brand-name span {{ color: #38BDF8; }}
         .login-headline {{
           font-size: clamp(2rem, 2.8vw, 2.55rem); line-height: 1.16; color: #F8FAFC; margin: 0 0 14px;
-        }}
-        .login-headline-accent {{
-          background: linear-gradient(90deg, #38BDF8 0%, #818CF8 48%, #A855F7 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
         }}
         .login-subcopy {{
           font-size: 1rem; color: #D7DDFB; max-width: 420px; line-height: 1.6; margin: 0;
@@ -393,9 +380,9 @@ def inject_css(hide_sidebar: bool = False, theme: dict | None = None) -> None:
         @media (max-width: 760px) {{
           .block-container {{ padding-left: 1rem; padding-right: 1rem; }}
           .soft-card {{ padding: 18px; }}
-          .login-cosmos {{ width: 120vw; top: 58%; opacity: .62; }}
-          .login-copy {{ padding-top: 2px; }}
-          .login-top-brand {{ margin-bottom: 0.75rem; }}
+          .login-cosmos {{ width: 720px; right: -420px; bottom: -90px; opacity: .72; }}
+          .login-copy {{ padding-top: 6px; }}
+          .login-brand {{ margin-bottom: 18px; }}
           .benefit-grid {{ gap: 10px; margin-top: 18px; }}
           .benefit-card {{ flex-basis: 100%; }}
           .social-login-row {{ justify-content: center; }}
@@ -471,60 +458,6 @@ def inject_login_css() -> None:
         div[data-testid="column"]:has(.login-panel-anchor) div[data-testid="stTextInput"] {
           margin-bottom: 0.2rem;
         }
-        .login-field-email [data-testid="stTextInput"] > div,
-        .login-field-password [data-testid="stTextInput"] > div {
-          position: relative;
-        }
-        .login-field-email [data-testid="stTextInput"] > div::before {
-          content: "✉";
-          position: absolute;
-          left: 12px;
-          top: calc(50% + 0.55rem);
-          transform: translateY(-50%);
-          z-index: 3;
-          font-size: 0.92rem;
-          opacity: 0.72;
-          pointer-events: none;
-        }
-        .login-field-password [data-testid="stTextInput"] > div::before {
-          content: "🔒";
-          position: absolute;
-          left: 12px;
-          top: calc(50% + 0.55rem);
-          transform: translateY(-50%);
-          z-index: 3;
-          font-size: 0.88rem;
-          opacity: 0.72;
-          pointer-events: none;
-        }
-        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input {
-          background: rgba(15, 23, 42, 0.52) !important;
-          color: #F8FAFC !important;
-          border: 1px solid rgba(255,255,255,0.18) !important;
-          border-radius: 12px !important;
-          min-height: 2.55rem;
-          padding-left: 2.35rem !important;
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
-        }
-        div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stTextInput"] input::placeholder {
-          color: rgba(215, 221, 251, 0.55) !important;
-        }
-        .login-field-password [data-testid="column"]:last-child {
-          padding-left: 0.35rem;
-        }
-        .login-password-eye .stButton > button {
-          min-height: 2.55rem !important;
-          width: 2.55rem !important;
-          padding: 0 !important;
-          background: rgba(15, 23, 42, 0.52) !important;
-          border: 1px solid rgba(255,255,255,0.18) !important;
-          color: #D7DDFB !important;
-          box-shadow: none !important;
-        }
-        .login-password-eye .stButton > button:hover {
-          background: rgba(255,255,255,0.12) !important;
-          color: #F8FAFC !important;
-        }
         div[data-testid="column"]:has(.login-panel-anchor) [data-testid="stCheckbox"] {
           margin-top: 0.1rem;
           margin-bottom: 0;
@@ -562,7 +495,7 @@ def inject_login_css() -> None:
           text-align: center;
           color: #D7DDFB;
           font-size: 0.8rem;
-          margin: 0.45rem 0 0.55rem;
+          margin: 0.3rem 0 0.4rem;
           letter-spacing: 0.01em;
         }
         [data-testid="stTextInput"] label,
@@ -575,8 +508,13 @@ def inject_login_css() -> None:
         [data-testid="stCheckbox"] p {
           color: #D7DDFB !important;
         }
-        [data-testid="stTabs"] [aria-selected="true"] {
-          border-bottom: 2px solid #38BDF8 !important;
+        [data-testid="stTextInput"] input {
+          background: rgba(255,255,255,0.94) !important;
+          color: #241B33 !important;
+          border: 1px solid rgba(255,255,255,0.32) !important;
+        }
+        [data-testid="stTextInput"] input::placeholder {
+          color: rgba(36,27,51,.58) !important;
         }
         [data-testid="stTabs"] [aria-selected="true"] p {
           color: #38BDF8 !important;
@@ -608,14 +546,6 @@ def inject_login_css() -> None:
           backdrop-filter: blur(12px);
           border-radius: 12px !important;
           min-height: 2.35rem !important;
-          gap: 0.55rem;
-        }
-        .social-login-row .stButton > button::before {
-          content: "";
-          display: inline-block;
-          width: 18px;
-          height: 18px;
-          background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23FFC107' d='M43.611 20.083H42V20H24v8h11.303C33.654 32.657 29.083 36 24 36c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C33.64 6.053 28.991 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z'/%3E%3Cpath fill='%23FF3D00' d='M6.306 14.691l6.571 4.819C14.655 16.108 18.961 13 24 13c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C33.64 6.053 28.991 4 24 4 16.318 4 9.656 8.337 6.306 14.691z'/%3E%3Cpath fill='%234CAF50' d='M24 44c5.01 0 9.47-1.92 12.865-5.055l-5.94-4.89C29.083 36 24.514 32.657 22.303 28H11.699v8.001C15.084 40.671 19.253 44 24 44z'/%3E%3Cpath fill='%231976D2' d='M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 5.94 4.89C36.795 39.201 44 34 44 24c0-1.341-.138-2.65-.389-3.917z'/%3E%3C/svg%3E");
         }
         .social-login-row .stButton > button:hover,
         div[data-testid="column"]:has(.social-login-row) div[data-testid="stButton"] > button:hover {

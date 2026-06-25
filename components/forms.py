@@ -108,29 +108,6 @@ def social_login_buttons() -> None:
     st.markdown("</div>", unsafe_allow_html=True)
 
 
-def _login_password_field(*, placeholder: str = "", key: str = "login_password") -> str:
-    show_key = f"{key}_visible"
-    st.session_state.setdefault(show_key, False)
-    st.markdown('<div class="login-field login-field-password">', unsafe_allow_html=True)
-    pass_col, toggle_col = st.columns([6.5, 1], vertical_alignment="bottom")
-    with pass_col:
-        value = st.text_input(
-            "Senha",
-            placeholder=placeholder,
-            type="default" if st.session_state[show_key] else "password",
-            key=key,
-        )
-    with toggle_col:
-        icon = "👁" if not st.session_state[show_key] else "🙈"
-        st.markdown('<div class="login-password-eye">', unsafe_allow_html=True)
-        if st.button(icon, key=f"{key}_toggle", help="Mostrar ou ocultar senha"):
-            st.session_state[show_key] = not st.session_state[show_key]
-            st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-    return value
-
-
 def _login_actions_row() -> None:
     remember_col, forgot_col = st.columns([1.15, 1], vertical_alignment="center")
     with remember_col:
@@ -175,23 +152,17 @@ def login_page() -> None:
     if login_src:
         st.markdown(f'<img class="login-cosmos" src="{login_src}" alt="">', unsafe_allow_html=True)
 
-    st.markdown(
-        """
-        <div class="login-top-brand">
-          <span class="brand-mark">🎓</span>
-          <div class="login-brand-name">EduTrack <span>AI</span></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
     left, right = st.columns([1.08, 0.92], gap="medium")
     with left:
         st.markdown('<div class="login-copy-anchor"></div>', unsafe_allow_html=True)
         st.markdown(
             """
             <div class="login-copy">
-              <h1 class="login-headline">Seu semestre<br/><span class="login-headline-accent">sob controle</span></h1>
+              <div class="login-brand">
+                <span class="brand-mark">🎓</span>
+                <div class="login-brand-name">EduTrack <span>AI</span></div>
+              </div>
+              <h1 class="login-headline">Seu semestre<br/>sob controle</h1>
               <p class="login-subcopy">
                 Planeje seus estudos, acompanhe suas tarefas e alcance seus objetivos.
               </p>
@@ -227,10 +198,8 @@ def login_page() -> None:
                 '</div>',
                 unsafe_allow_html=True,
             )
-            st.markdown('<div class="login-field login-field-email">', unsafe_allow_html=True)
             email = text_field("E-mail", placeholder="seu@email.com", key="login_email")
-            st.markdown("</div>", unsafe_allow_html=True)
-            senha = _login_password_field(placeholder="Digite sua senha", key="login_password")
+            senha = password_field("Senha", placeholder="Digite sua senha", key="login_password")
             _login_actions_row()
             st.markdown('<div class="login-submit-gap">', unsafe_allow_html=True)
             if primary_button("Acessar meu painel  →", key="login_submit"):
